@@ -4,15 +4,18 @@ import Hero from '../../components/Hero/Hero'
 import Collections from '../../components/collections/Collections'
 import Brand from '../../components/Brands/Brand'
 import Footer from '../../components/Footer/Footer'
+import Products from '../products/Products'
 
 const Home = () => {
   return (
     <div>
-        <Navbar/>
+        {/* <Navbar/>
         <Hero/>
         <Collections />
         <Brand />
-        <Footer />
+        <Footer /> */}
+        {/* Product page test ---- */}
+        <Products/>
     </div>
   )
 }
