@@ -13,7 +13,7 @@ ChromoX is a creative platform where art and technology converge to provide a se
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/your-username/ChromoX.git`
+1. Clone the repository: `git clone https://github.com/Akash-shah-cis/ChromoX.git`
 2. Install dependencies: `npm install`
 3. Run the development server: `npm start`
 
