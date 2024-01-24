@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
 import { Dialog, Disclosure, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
@@ -55,7 +55,7 @@ const MobileFilter = ({mobileFiltersOpen,setMobileFiltersOpen}) => {
   return (
     <>
      <Transition.Root show={mobileFiltersOpen} as={Fragment}>
-          <Dialog as="div" className="relative z-40 lg:hidden" onClose={setMobileFiltersOpen}>
+          <Dialog as="div" className="relative z-40 lg:hidden" onClose={setMobileFiltersOpen} style={{ zIndex:999}}>
             <Transition.Child
               as={Fragment}
               enter="transition-opacity ease-linear duration-300"

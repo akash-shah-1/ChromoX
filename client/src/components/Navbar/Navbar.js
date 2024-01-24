@@ -7,6 +7,9 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import navigation from "./navigation";
+import {Link} from 'react-router-dom'
+
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -16,10 +19,10 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white  fixed top-0 left-0 right-0 z-50"   >
       {/* Mobile menu */}
-      <Transition.Root show={open}>
-        <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
+      <Transition.Root show={open}   >
+        <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen} style={{ zIndex:999}}>
           <Transition.Child
             enter="transition-opacity ease-linear duration-300"
             enterFrom="opacity-0"
@@ -40,7 +43,7 @@ const Navbar = () => {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
+              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl" >
                 <div className="flex px-4 pb-2 pt-5">
                   <button
                     type="button"
@@ -214,7 +217,8 @@ const Navbar = () => {
 
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
-                <a
+               <Link to='/' >
+               <a
                   href="#"
                   class="flex justify-center items-center text-2xl font-semibold "
                   style={{ fontFamily: "fantasy", fontWeight: 100 }}
@@ -365,6 +369,7 @@ const Navbar = () => {
                   </svg>
                   ChromoX
                 </a>
+               </Link>
               </div>
 
               {/* Flyout menus */}
