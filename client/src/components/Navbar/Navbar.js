@@ -8,6 +8,7 @@ import {
 } from "@heroicons/react/24/outline";
 import navigation from "./navigation";
 import {Link} from 'react-router-dom'
+import Cart from "../Cart/Cart";
 
 
 
@@ -16,7 +17,9 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
+  const [openCart,setOpenCart] = useState(false);
   const [open, setOpen] = useState(false);
+
 
   return (
     <div className="bg-white  fixed top-0 left-0 right-0 z-50"   >
@@ -544,6 +547,7 @@ const Navbar = () => {
                     <ShoppingBagIcon
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
+                      onClick={()=>setOpenCart(true)}
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
                       0
@@ -556,6 +560,7 @@ const Navbar = () => {
           </div>
         </nav>
       </header>
+      <Cart  openCart={openCart} setOpenCart={setOpenCart} />
     </div>
   );
 };
