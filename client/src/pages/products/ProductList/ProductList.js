@@ -54,9 +54,11 @@ const ProductList = () => {
                   <button onClick={handleShow} className="group relative hover:bg-black hover:text-white flex items-center justify-center group-hover:opacity-100 transition duration-300 bg-transparent font-semibold py-2 px-4 border border-gray-800 rounded md:text-sm">
                     Quick View
                   </button>
-                  <button className="group relative hover:bg-black hover:text-white flex items-center justify-center group-hover:opacity-100 transition duration-300 bg-transparent font-semibold py-2 px-4 border border-gray-800 rounded md:text-sm">
-                   Add to cart
+                 <Link to='/product_name/des' >
+                 <button className="group relative hover:bg-black hover:text-white flex items-center justify-center group-hover:opacity-100 transition duration-300 bg-transparent font-semibold py-2 px-4 border border-gray-800 rounded md:text-sm">
+                   Show details
                   </button>
+                 </Link>
                 </div>
               </div>
             ))}

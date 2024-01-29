@@ -40,7 +40,7 @@ const QuickView = ({open,setOpen}) => {
   return (
     <div>
          <Transition.Root show={open}>
-      <Dialog as="div" className="relative z-10" onClose={setOpen} style={{ zIndex:9999}}>
+      <Dialog as="div" className="relative z-10" onClose={setOpen} style={{ zIndex:999999999999999}}>
         <Transition.Child
           enter="ease-out duration-300"
           enterFrom="opacity-0"
@@ -52,7 +52,7 @@ const QuickView = ({open,setOpen}) => {
           <div className="fixed inset-0 hidden bg-gray-500 bg-opacity-75 transition-opacity md:block" />
         </Transition.Child>
 
-        <div className="fixed inset-0 z-10 w-screen overflow-y-auto" style={{  marginTop:"10rem"}}>
+        <div className="fixed inset-0 z-10 w-screen overflow-y-auto" style={{  marginTop:"2.5rem"}}>
           <div className="flex min-h-full items-stretch justify-center text-center md:items-center md:px-2 lg:px-4">
             <Transition.Child
              
