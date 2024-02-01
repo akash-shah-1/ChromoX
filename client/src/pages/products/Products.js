@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import ProductList from "./ProductList/ProductList";
@@ -32,7 +32,11 @@ const Scroller = styled.div`
 `;
 
 const Products = () => {
-  
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   return (
