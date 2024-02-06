@@ -1,7 +1,4 @@
 const Product = require("../models/Product");
-const bcrypt = require("bcrypt");
-const saltRounds = 10;
-const jwt = require("jsonwebtoken");
 
 //Creating Product
 module.exports.createProduct = async (req, res) => {
