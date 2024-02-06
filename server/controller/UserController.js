@@ -103,14 +103,7 @@ module.exports.UpdateUser = async (req, res) => {
     const UserId = req.params.id;
     //udpated data entered by user
     const UpdatedBody = req.body;
-
-    // Check if there are no changes to update
-    if (Object.keys(UpdatedBody).length === 0) {
-      return res
-        .status(400)
-        .json({ message: "No changes provided for update" });
-    }
-
+    
     const UdpateUser = await User.findByIdAndUpdate(UserId, UpdatedBody, {
       new: true,
     });
@@ -137,7 +130,7 @@ module.exports.DeleteUser = async (req, res) => {
     //return success
     return res.status(200).json({
       message: "User Deleted Successfully",
-      UdpatedUser: DeletedUser,
+      Deleted_User: DeletedUser,
     });
   } catch (error) {
     return res.status(500).json({
@@ -199,3 +192,39 @@ module.exports.getAllUser = async (req, res) => {
 };
 
 //Get User Stats 
+//It will return us total number of user per months in response
+// means if today is 6 feb , so it will show me data from 6feb 2023 to the current date 6th feb 2024 per/month
+//To get user per month data we will use monogodb agreegate
+
+module.exports.getstats = async(req,res)=>{
+  try {
+    //Getting current data/today's data -> ex : Tue Feb 06 2024 12:40:03 GMT+0530 (India Standard Time)
+    const date = new Date();
+    //getting last year date from now ->  means if today is 6 feb 2024, so it will show me 6feb 2023 -> ex : Mon Feb 06 2023 12:42:12 GMT+0530 (India Standard Time)
+    const lastYear = new Date(date.setFullYear(date.getFullYear()-1));
+
+    //MongoDB Aggegation
+    const data = await User.aggregate([
+      {$match:{createdAt :{$gte : lastYear}}}, //It will return me user who is created lastyear from the current date
+      {$project:{
+        month: {$month : "$createdAt"} // return me month from created at -> sp supppose user createdAt : 2024-02-02T12:56:00.432+00:00 , so it will give me 02, that is month 2 (feb) 
+      }} ,
+      {
+        $group:{
+          _id:"$month", // taking month as Id 
+          total:{$sum :1} // this will return me total user per month (month is accodign to ID , because we set id as out month)
+        }
+      }
+    ])
+
+    return res.status(200).json({
+      message :"User Stats",
+      data
+    })
+
+  } catch (error) {
+    return res.status(500).json({
+      message:"Error in getting stats"
+    })    
+  }
+}

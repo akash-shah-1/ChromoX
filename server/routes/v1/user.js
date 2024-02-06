@@ -18,5 +18,7 @@ router.delete('/:id', passport.authenticate('jwt',{session:false}),checkOwnProfi
 router.get('/find/:id',passport.authenticate('jwt',{session:false}), isAdmin,userController.getUser);
 //Get All User
 router.get('/alluser',passport.authenticate('jwt',{session:false}), isAdmin,userController.getAllUser);
+//Get Stats
+router.get('/stats',passport.authenticate('jwt',{session:false}), isAdmin,userController.getstats);
 
 module.exports = router;
