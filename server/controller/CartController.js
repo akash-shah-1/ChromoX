@@ -93,7 +93,7 @@ module.exports.getCart = async (req, res) => {
 module.exports.getAllCart = async (req, res) => {
   try {
     const limit = req.query.limit;
-    Cart =  await Cart.find().limit(limit); 
+    const Cart =  await Cart.find().limit(limit); 
     
     return res.status(200).json(Cart);
   } catch (error) {
