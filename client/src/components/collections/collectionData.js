@@ -1,46 +1,52 @@
 const callouts = [
-    {
-      name: 'Desk and Office',
-      description: 'Work from home accessories',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg',
-      imageAlt: 'Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.',
-      href: '#',
-    },
-    {
-      name: 'Self-Improvement',
-      description: 'Journals and note-taking',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg',
-      imageAlt: 'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
-      href: '#',
-    },
-    {
-      name: 'Travel',
-      description: 'Daily commute essentials',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg',
-      imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-      href: '#',
-    },
-    {
-      name: 'Desk and Office',
-      description: 'Work from home accessories',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg',
-      imageAlt: 'Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.',
-      href: '#',
-    },
-    {
-      name: 'Self-Improvement',
-      description: 'Journals and note-taking',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg',
-      imageAlt: 'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
-      href: '#',
-    },
-    {
-      name: 'Travel',
-      description: 'Daily commute essentials',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg',
-      imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-      href: '#',
-    },
-  ]
+  {
+    name: 'Abstract Art',
+    description: 'Explore vibrant abstract paintings.',
+    imageSrc: 'https://source.unsplash.com/featured/?abstract,painting',
+    imageAlt: 'Abstract painting',
+    href: '#',
+    category: 'Abstract',
+  },
+  {
+    name: 'Landscape Paintings',
+    description: 'Discover beautiful landscapes captured on canvas.',
+    imageSrc: 'https://source.unsplash.com/featured/?landscape,painting',
+    imageAlt: 'Landscape painting',
+    href: '#',
+    category: 'Landscape',
+  },
+  {
+    name: 'Portrait Paintings',
+    description: 'Capture the essence of individuals with portrait paintings.',
+    imageSrc: 'https://source.unsplash.com/featured/?portrait,painting',
+    imageAlt: 'Portrait painting',
+    href: '#',
+    category: 'Portrait',
+  },
+  {
+    name: 'Still Life Paintings',
+    description: 'Adorn your space with captivating still life compositions.',
+    imageSrc: 'https://source.unsplash.com/featured/?still-life,painting',
+    imageAlt: 'Still life painting',
+    href: '#',
+    category: 'life',
+  },
+  {
+    name: 'Abstract Art',
+    description: 'Explore vibrant abstract paintings.',
+    imageSrc: 'https://source.unsplash.com/featured/?abstract,painting',
+    imageAlt: 'Abstract painting',
+    href: '#',
+    category: 'Abstract',
+  },
+  {
+    name: 'Landscape Paintings',
+    description: 'Discover beautiful landscapes captured on canvas.',
+    imageSrc: 'https://source.unsplash.com/featured/?landscape,painting',
+    imageAlt: 'Landscape painting',
+    href: '#',
+    category: 'Landscape',
+  },
+];
 
-  module.exports= callouts;
+module.exports = callouts;

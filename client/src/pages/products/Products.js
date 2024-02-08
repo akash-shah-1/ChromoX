@@ -62,12 +62,12 @@ const Products = () => {
                 Products
               </h2>
 
-              <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-                {/*--------------  Filters by color category ---------------*/}
+              <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-7">
+                {/*--------------  Filters by  category ---------------*/}
                 <Category />
 
                 {/* ============= Product grid  OR LIST =========*/}
-                <Scroller className="lg:col-span-3">
+                <Scroller className="lg:col-span-6">
                   <ProductList />
                 </Scroller>
               </div>
