@@ -92,26 +92,58 @@ const Category = () => {
   const getcatgery = categery.pathname.split("/")[2];
   console.log("My Categery = > ", getcatgery);
 
-  const [filter,setfilter] = useState({});
+  const [filter, setfilter] = useState({});
 
+  //Handling filter
   const HandleFilter = (e) => {
-    const {name, value} = e.target;
-    setfilter({
-      ...filter,
-      [name] : value
-    })
-    console.log("Filter =>", filter)
+    const { name, value } = e.target;
 
-};
+    if (name === "price" || name=== 'size') {
+      if (filter.hasOwnProperty(name) && filter[name].includes(value)) {
+        setfilter({
+          [name]: filter[name].filter((item) => item !== value),
+        });
+      } else {
+        const updatedFilter = {
+          ...filter,
+          [name]: [value],
+        };
+        setfilter(updatedFilter);
+      }
+      return;
+    }
+    // Check if the filter name exists in the current filter state
+    if (filter.hasOwnProperty(name)) {
+      // If the value is already selected, remove it
+      if (filter[name].includes(value)) {
+        const updatedFilter = {
+          ...filter,
+          [name]: filter[name].filter((item) => item !== value),
+        };
+        setfilter(updatedFilter);
+      } else {
+        // If the value is not selected, append it
+        const updatedFilter = {
+          ...filter,
+          [name]: [...filter[name], value],
+        };
+        setfilter(updatedFilter);
+      }
+    } else {
+      // If the filter name doesn't exist in the current filter state, create a new entry
+      setfilter({
+        ...filter,
+        [name]: [value],
+      });
+    }
+  };
 
-
-    // Use useEffect to observe changes in filter state
-    useEffect(() => {
-      // Perform actions based on updated filter state
-      console.log("Filter updated:", filter);
-      // Any other actions...
-    }, [filter]); // Dependency array ensures this effect runs when filter state changes
-  
+  // Use useEffect to observe changes in filter state
+  useEffect(() => {
+    // Perform actions based on updated filter state
+    console.log("Filter updated:", filter);
+    // Any other actions...
+  }, [filter]); // Dependency array ensures this effect runs when filter state changes
 
   return (
     <>
@@ -161,6 +193,25 @@ const Category = () => {
                           defaultValue={option.value}
                           type="checkbox"
                           defaultChecked={option.checked}
+                          checked={
+                            filter[section.id] &&
+                            filter[section.id].includes(option.value)
+                          }
+                          // --------- below comment show how check is working
+                          // Selecting "Color: Blue":
+                          // Initially, filter['color'] will contain ['blue'].
+                          // The expression filter['color'] && filter['color'].includes('blue') will evaluate to true because 'blue' is included in the filter array.
+                          // Selecting "Color: Red":
+                          // filter['color'] will be updated to ['red'].
+                          // Now, the expression filter['color'] && filter['color'].includes('red') will evaluate to true because 'red' is included in the filter array.
+                         
+
+                          // Selecting "Price: $800", then "Price: $200":
+                          // When selecting "Price: $800", filter['price'] will be ['800'].
+                          // The expression filter['price'] && filter['price'].includes('800') will evaluate to true because '800' is included in the filter array.
+                          // When selecting "Price: $200", filter['price'] will be updated to ['200'] (replacing the previous value).
+                          // Now, the expression filter['price'] && filter['price'].includes('800') will evaluate to false because '800' is no longer included in the filter array.
+
                           className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                         />
                         <label
