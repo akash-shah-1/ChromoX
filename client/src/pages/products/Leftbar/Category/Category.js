@@ -1,9 +1,9 @@
 import { Disclosure } from "@headlessui/react";
 import { MinusIcon, PlusIcon } from "@heroicons/react/20/solid";
-import { useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
 
-const Category = () => {
+const Category = ({HandleFilter,filter}) => {
+ 
+  //Subcategeries dummy data
   const subCategories = [
     { name: "Abstract", href: "#" },
     { name: "Landscape", href: "#" },
@@ -12,7 +12,8 @@ const Category = () => {
     { name: "Modern", href: "#" },
     { name: "Contemporary", href: "#" },
   ];
-
+ 
+  //filter dummy data
   const filters = [
     {
       id: "category",
@@ -88,62 +89,6 @@ const Category = () => {
     },
   ];
 
-  const categery = useLocation();
-  const getcatgery = categery.pathname.split("/")[2];
-  console.log("My Categery = > ", getcatgery);
-
-  const [filter, setfilter] = useState({});
-
-  //Handling filter
-  const HandleFilter = (e) => {
-    const { name, value } = e.target;
-
-    if (name === "price" || name=== 'size') {
-      if (filter.hasOwnProperty(name) && filter[name].includes(value)) {
-        setfilter({
-          [name]: filter[name].filter((item) => item !== value),
-        });
-      } else {
-        const updatedFilter = {
-          ...filter,
-          [name]: [value],
-        };
-        setfilter(updatedFilter);
-      }
-      return;
-    }
-    // Check if the filter name exists in the current filter state
-    if (filter.hasOwnProperty(name)) {
-      // If the value is already selected, remove it
-      if (filter[name].includes(value)) {
-        const updatedFilter = {
-          ...filter,
-          [name]: filter[name].filter((item) => item !== value),
-        };
-        setfilter(updatedFilter);
-      } else {
-        // If the value is not selected, append it
-        const updatedFilter = {
-          ...filter,
-          [name]: [...filter[name], value],
-        };
-        setfilter(updatedFilter);
-      }
-    } else {
-      // If the filter name doesn't exist in the current filter state, create a new entry
-      setfilter({
-        ...filter,
-        [name]: [value],
-      });
-    }
-  };
-
-  // Use useEffect to observe changes in filter state
-  useEffect(() => {
-    // Perform actions based on updated filter state
-    console.log("Filter updated:", filter);
-    // Any other actions...
-  }, [filter]); // Dependency array ensures this effect runs when filter state changes
 
   return (
     <>
@@ -190,7 +135,7 @@ const Category = () => {
                           id={`filter-${section.id}-${optionIdx}`}
                           name={`${section.id}`}
                           onChange={(e) => HandleFilter(e)}
-                          defaultValue={option.value}
+                          value={option.value}
                           type="checkbox"
                           defaultChecked={option.checked}
                           checked={
