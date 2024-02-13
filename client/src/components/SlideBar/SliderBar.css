@@ -1,0 +1,39 @@
+.slider-bar-container {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent line breaks for list items */
+  -ms-overflow-style: none;  /* Hide scrollbar in Internet Explorer */
+  scrollbar-width: none;  /* Hide scrollbar in Firefox */
+}
+
+.slider-bar {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-flex;
+}
+
+.slider-bar::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in WebKit browsers */
+}
+
+.slider-bar-item {
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border:1px solid black;
+  border-radius: 20px;
+  margin-right: 5px;
+}
+
+.slider-bar-item.active {
+  background-color: black;
+  color: #fff;
+}
+
+/* Additional styles for small screens */
+@media (max-width: 768px) {
+  .slider-bar-container {
+    overflow-x: scroll; /* Enable horizontal scrolling on small screens */
+  }
+}

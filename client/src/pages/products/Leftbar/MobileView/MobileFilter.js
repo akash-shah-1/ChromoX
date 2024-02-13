@@ -91,7 +91,7 @@ const filters = [
 
 
 
-const MobileFilter = ({mobileFiltersOpen,setMobileFiltersOpen}) => {
+const MobileFilter = ({mobileFiltersOpen,setMobileFiltersOpen,HandleFilter,filter}) => {
   return (
     <>
      <Transition.Root show={mobileFiltersOpen} as={Fragment}>
@@ -166,10 +166,15 @@ const MobileFilter = ({mobileFiltersOpen,setMobileFiltersOpen}) => {
                                   <div key={option.value} className="flex items-center">
                                     <input
                                       id={`filter-mobile-${section.id}-${optionIdx}`}
-                                      name={`${section.id}[]`}
-                                      defaultValue={option.value}
+                                      name={`${section.id}`}
+                                      value={option.value}
+                                      onChange={(e) => HandleFilter(e)}
                                       type="checkbox"
                                       defaultChecked={option.checked}
+                                      checked={
+                                        filter[section.id] &&
+                                        filter[section.id].includes(option.value)
+                                      }
                                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                     />
                                     <label

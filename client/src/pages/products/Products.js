@@ -9,28 +9,6 @@ import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 
 
-const Scroller = styled.div`
-  height: 90vh;
-  overflow-y: auto;
-  scrollbar-width: 0px;
-
-  &::-webkit-scrollbar {
-    width: 0.1em;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #888;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: #555;
-    border-radius: 20px;
-  }
-`;
 
 const Products = () => {
  
@@ -99,7 +77,8 @@ const Products = () => {
   useEffect(() => {
     console.log(filter)
     console.log(Sort)
-  }, [Sort]);
+    console.log(getcatgery)
+  }, [Sort, filter]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -119,11 +98,12 @@ const Products = () => {
           <MobileFilter
             mobileFiltersOpen={mobileFiltersOpen}
             setMobileFiltersOpen={setMobileFiltersOpen}
+            HandleFilter={HandleFilter} filter={filter}
           />
 
           <main className="mx-auto max-w-xxl px-4 sm:px-6 lg:px-8">
             {/* ----------------===================>    Topbar options    <=====================----------------------------*/}
-            <Filter setMobileFiltersOpen={setMobileFiltersOpen} HandleSort={HandleSort} Active={Active} />
+            <Filter setMobileFiltersOpen={setMobileFiltersOpen} HandleSort={HandleSort} Active={Active}  />
 
             <section aria-labelledby="products-heading" className="pb-24 pt-6">
               <h2 id="products-heading" className="sr-only">
@@ -134,9 +114,9 @@ const Products = () => {
                 {/*--------------  Filters by  category ---------------*/}
                 <Category HandleFilter={HandleFilter} filter={filter} />
                 {/* ============= Product grid OR LIST ========= */}
-                <Scroller className="lg:col-span-6">
+                <div className="lg:col-span-6 h-full">
                   <ProductList />
-                </Scroller>
+                </div>
               </div>
             </section>
           </main>

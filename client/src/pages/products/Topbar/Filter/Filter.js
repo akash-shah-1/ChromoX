@@ -6,6 +6,7 @@ import {
   FunnelIcon,
   Squares2X2Icon,
 } from "@heroicons/react/20/solid";
+import SliderBar from "../../../../components/SlideBar/SliderBar";
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: false },
@@ -24,15 +25,12 @@ const Filter = ({ setMobileFiltersOpen, HandleSort ,Active}) => {
 
   return (
     <>
-      <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 mt-6 pt-24">
-        <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-        Art Oasis 🎨
-        </h1>
-
-        <div className="flex items-center">
+      <div className="flex items-baseline  justify-between justify-around border-b border-gray-200 pb-6 mt-6 pt-24 ">
+     <SliderBar />
+        <div className="flex items-center ">
           <Menu as="div" className="relative inline-block text-left">
             <div>
-              <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
+              <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900 ">
                 Sort
                 <ChevronDownIcon
                   className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
