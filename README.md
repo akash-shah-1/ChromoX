@@ -19,9 +19,11 @@ ChromoX is a creative platform where art and technology converge to provide a se
 
 ## Technologies Used
 
-- React
-- Strapi
+- React.js
 - Stripe
+- Node.js
+- Express.js
+- MongoDB
 
 ## How to Contribute
 
