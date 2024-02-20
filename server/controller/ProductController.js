@@ -3,7 +3,7 @@ const Product = require("../models/Product");
 //Creating Product
 module.exports.createProduct = async (req, res) => {
   try {
-    const  newProduct = new Product(req.body);
+    const newProduct = new Product(req.body);
     //Create Product
     const savedProduct = await Product.create(newProduct);
     // send success status
@@ -18,7 +18,6 @@ module.exports.createProduct = async (req, res) => {
   }
 };
 
-
 //Udapte Product
 module.exports.UpdateProduct = async (req, res) => {
   try {
@@ -26,9 +25,13 @@ module.exports.UpdateProduct = async (req, res) => {
     //udpated data entered by product
     const UpdatedBody = req.body;
 
-    const UdpateProduct = await Product.findByIdAndUpdate(ProductId, UpdatedBody, {
-      new: true,
-    });
+    const UdpateProduct = await Product.findByIdAndUpdate(
+      ProductId,
+      UpdatedBody,
+      {
+        new: true,
+      }
+    );
 
     //return success
     return res.status(200).json({
@@ -41,7 +44,6 @@ module.exports.UpdateProduct = async (req, res) => {
     });
   }
 };
-
 
 //Delete Product
 module.exports.DeleteProduct = async (req, res) => {
@@ -61,7 +63,6 @@ module.exports.DeleteProduct = async (req, res) => {
     });
   }
 };
-
 
 //Get Product
 module.exports.getProduct = async (req, res) => {
@@ -88,37 +89,66 @@ module.exports.getProduct = async (req, res) => {
   }
 };
 
-
 //Get All Product
 module.exports.getAllProduct = async (req, res) => {
   try {
     //If we want latest Product so we can add query in params ?new=true&limit=5
-    const query = req.query.new;
-    const limit = req.query.limit || 2;
-    const categery = req.query.categery;
+    const limit = req.query.limit;
+    const query = req.query;
+    let filter = {};
 
-    let product;
-
-    //if there is a query so it will return latest Product
-    if(query){
-        product = await Product.find().sort({ createdAt: -1 }).limit(limit) // the value -1 in the sort method is used to sort documents in descending order based on the specified field.
-    }
-    else if(categery){
-        product = await Product.find({
-            categories:{
-                $in : [categery]
-            }
-        }).limit(limit)
-    }
-    else{
-    product =  await Product.find().limit(limit); 
+    //Handle Categery filter
+    //Handle Category filter
+    if (query.category) {
+      filter.categories = { $in: query.category };
     }
 
-    return res.status(200).json(product);
+    console.log(filter);
+    //Medium
+    if (query.medium) {
+      filter.medium = { $in: query.medium };
+    }
+
+    //Size
+    if (query.size) {
+      filter.size = { $in: query.size };
+    }
+
+    //Price
+    if (query.price) {
+      const [ minPrice, maxPrice ] = query.price.split("-").map(Number);
+      console.log(minPrice," ", maxPrice);
+      filter.price = { $gte: minPrice, $lte: maxPrice };
+    }
+    console.log(filter.price)
+
+    //style
+    if (query.style) {
+      filter.style = { $in: query.style };
+    }
+
+    //subject
+    if (query.subject) {
+      filter.subject = { $in: query.subject };
+    }
+
+    //Handling Sort
+    let sortOption = {};
+    if (query.sort === "Newest") {
+      sortOption = { createdAt: -1 };
+    } else if (query.sort === "Price: Low to High") {
+      sortOption = { price: 1 };
+    } else if (query.sort === "Price: High to Low") {
+      sortOption = { price: -1 };
+    }
+
+    let products = await Product.find(filter).sort(sortOption).limit(limit);
+
+    return res.status(200).json(products);
   } catch (error) {
+    console.log(error);
     return res.status(500).json({
       message: "Error in getting Product",
     });
   }
 };
-
