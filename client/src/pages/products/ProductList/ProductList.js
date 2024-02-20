@@ -54,10 +54,10 @@ console.log("My url -> ",url)
             Customers also purchased
           </h2>
 
-          <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2  lg:grid-cols-4  xl:grid-cols-5  xl:gap-x-10" style={{  }} >
+          <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2  lg:grid-cols-4  xl:grid-cols-5  xl:gap-x-10">
             {Products.map((product) => (
               <div key={product.id} className="group relative">
-              <Link to='/product_name/des' >
+              <Link to='/product_name/des'>
               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80"  >
                   <img
                     src={product.img}
@@ -87,7 +87,7 @@ console.log("My url -> ",url)
                   <button onClick={handleShow} className="group relative hover:bg-black hover:text-white flex items-center justify-center group-hover:opacity-100 transition duration-300 bg-transparent font-semibold py-2 px-4 border border-gray-800 rounded md:text-sm">
                     Quick View
                   </button>
-                 <Link to='/product_name/des' >
+                 <Link to={`/product/${product.id}`} >
                  <button className="group relative hover:bg-black hover:text-white flex items-center justify-center group-hover:opacity-100 transition duration-300 bg-transparent font-semibold py-2 px-4 border border-gray-800 rounded md:text-sm">
                    Show details
                   </button>
