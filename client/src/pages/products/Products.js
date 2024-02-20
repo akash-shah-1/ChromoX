@@ -17,8 +17,8 @@ const Products = () => {
   const getcatgery = categery.pathname.split("/")[2];
 
   const [filter, setfilter] = useState({});
-  const [Sort,setSort] = useState('Most Popular')
-  const [Active,SetActive] = useState('Most Popular')
+  const [Sort,setSort] = useState('')
+  const [Active,SetActive] = useState('')
 
   //Handling filter
   const HandleFilter = (e) => {
@@ -65,12 +65,14 @@ const Products = () => {
     }
   };
 
-  
   //HandleSort
   const HandleSort = (optionName) => {
     SetActive(optionName)
     setSort(optionName); 
   };
+
+  
+  
 
 
   // Use useEffect to observe changes in filter state
@@ -115,7 +117,7 @@ const Products = () => {
                 <Category HandleFilter={HandleFilter} filter={filter} />
                 {/* ============= Product grid OR LIST ========= */}
                 <div className="lg:col-span-6 h-full">
-                  <ProductList />
+                  <ProductList  filter = {filter} sort={Sort} />
                 </div>
               </div>
             </section>

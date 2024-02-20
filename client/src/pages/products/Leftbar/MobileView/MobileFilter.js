@@ -17,10 +17,10 @@ const filters = [
     id: "category",
     name: "Category",
     options: [
-      { value: "abstract", label: "Abstract", checked: false },
-      { value: "landscape", label: "Landscape", checked: false },
-      { value: "portrait", label: "Portrait", checked: false },
-      { value: "still-life", label: "Still Life", checked: false },
+      { value: "Abstract", label: "Abstract", checked: false },
+      { value: "Landscape", label: "Landscape", checked: false },
+      { value: "Portrait", label: "Portrait", checked: false },
+      { value: "Still Life", label: "Still Life", checked: false },
     ],
   },
   {
@@ -47,24 +47,24 @@ const filters = [
     id: "price",
     name: "Price",
     options: [
-      { value: "under-50", label: "Under $50", checked: false },
+      // { value: "under-50", label: "Under $50", checked: false },
       { value: "50-100", label: "$50 - $100", checked: false },
       { value: "100-200", label: "$100 - $200", checked: false },
       { value: "200-500", label: "$200 - $500", checked: false },
       { value: "over-500", label: "Over $500", checked: false },
     ],
   },
-  {
-    id: "color",
-    name: "Color",
-    options: [
-      { value: "blue", label: "Blue", checked: false },
-      { value: "green", label: "Green", checked: false },
-      { value: "red", label: "Red", checked: false },
-      { value: "yellow", label: "Yellow", checked: false },
-      { value: "black-white", label: "Black & White", checked: false },
-    ],
-  },
+  // {
+  //   id: "color",
+  //   name: "Color",
+  //   options: [
+  //     { value: "blue", label: "Blue", checked: false },
+  //     { value: "green", label: "Green", checked: false },
+  //     { value: "red", label: "Red", checked: false },
+  //     { value: "yellow", label: "Yellow", checked: false },
+  //     { value: "black-white", label: "Black & White", checked: false },
+  //   ],
+  // },
   {
     id: "style",
     name: "Style",
