@@ -1,20 +1,15 @@
 {
-   "version": 2,
-   "builds": [
-       {
-           "src": "./app.js",
-           "use": "@vercel/node"
-       }
-   ],
-   "routes": [
-       {
-           "src": "/(.*)",
-           "dest": "/"
-       }
-   ],
-   "env": {
-       "PORT": "8080",
-       "Mongo_URL": "mongodb+srv://akashs:1234qwe@chromo.2eksnco.mongodb.net/",
-       "secretKey": "ChromoX-123JHFDG"
-   }
+    "version": 2,
+    "builds": [
+      {
+        "src": "./index.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/"
+      }
+    ]
 }
