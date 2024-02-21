@@ -15,7 +15,7 @@ const ProductList = ({filter,sort}) => {
     const fetchProducts = async () => {
       try {
         // Construct the API request URL with filter and sort options
-        let url = 'https://chromo-x-test.vercel.app/product?';
+        let url = 'http://chromo-x-test.vercel.app/product?';
         if (filter) {
           for (const key in filter) {
             if (filter.hasOwnProperty(key)) {
