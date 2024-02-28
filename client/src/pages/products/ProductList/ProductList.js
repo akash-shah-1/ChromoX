@@ -9,12 +9,12 @@ import "react-loading-skeleton/dist/skeleton.css";
 const ProductList = ({ filter, sort }) => {
   const [Products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState({});
 
   const [open, setOpen] = useState(false);
-  const handleShow = (productId) => {
+  const handleShow = (product) => {
     setOpen(true);
-    setSelectedProduct(productId);
+    setSelectedProduct(product);
   };
 
 
@@ -154,7 +154,9 @@ const ProductList = ({ filter, sort }) => {
             </div>
           )}
         </div>
-        {open && <QuickView  open={open} setOpen={setOpen}  Product={selectedProduct}/>}
+       
+  <QuickView open={open} setOpen={setOpen} Product={selectedProduct} />
+
       </div>
     </>
   );

@@ -15,7 +15,7 @@ const Hero = () => {
               This year, our new summer collection will shelter you from the harsh elements of a world that doesn't care
               if you live or die.
             </p>
-            <Link  to='/products' >
+            <Link  to='/products/Landscape' >
          <a
                 href="#"
                 className="inline-block rounded-md mt-5 border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700 "

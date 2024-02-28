@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Dialog, RadioGroup, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { StarIcon } from "@heroicons/react/20/solid";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const product = {
   name: "Basic Tee 6-Pack ",
@@ -64,11 +66,11 @@ const QuickView = ({ open, setOpen, Product }) => {
             <div className="flex min-h-full items-stretch justify-center text-center md:items-center md:px-2 lg:px-4">
               <Transition.Child
                 enter="ease-out duration-300"
-                enterFrom="opacity-0 translate-y-4 md:translate-y-0 md:scale-95"
-                enterTo="opacity-100 translate-y-0 md:scale-100"
+                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                enterTo="opacity-100 translate-y-0 sm:scale-100"
                 leave="ease-in duration-200"
-                leaveFrom="opacity-100 translate-y-0 md:scale-100"
-                leaveTo="opacity-0 translate-y-4 md:translate-y-0 md:scale-95"
+                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
                 <Dialog.Panel className="flex w-full transform text-left text-base transition md:my-8 md:max-w-2xl md:px-4 lg:max-w-4xl">
                   <div className="relative flex w-full items-center overflow-hidden bg-white px-4 pb-8 pt-14 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">

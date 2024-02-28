@@ -212,11 +212,6 @@ const Description = () => {
                     </li>
                     <li className="text-gray-400">
                       <span className="text-gray-600">{Product.subject}</span>
-                  {product.highlights.map((highlight) => (
-                    <li key={highlight} className="text-gray-400">
-                      <span className="text-gray-600">{highlight}</span>
-                    </li>
-                  ))}
                   </li>
                 </ul>
               </div>
