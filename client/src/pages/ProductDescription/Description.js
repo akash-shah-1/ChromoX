@@ -196,7 +196,6 @@ const Description = () => {
 
               <div className="space-y-6">
                 <p className="text-base text-gray-900">{Product.desc}</p>
-                <p className="text-base text-gray-900">{product.description}</p>
               </div>
             </div>
 
@@ -228,7 +227,6 @@ const Description = () => {
 
               <div className="mt-4 space-y-6">
                 <p className="text-sm text-gray-600">{Product.desc}</p>
-                <p className="text-sm text-gray-600">{product.details}</p>
               </div>
             </div>
           </div>
