@@ -7,6 +7,7 @@ import {
   Squares2X2Icon,
 } from "@heroicons/react/20/solid";
 import SliderBar from "../../../../components/SlideBar/SliderBar";
+import SearchBar from  "../../../../components/SearchBar/SearchBar"
 
 const sortOptions = [
   // { name: "Most Popular", href: "#", current: false },
@@ -26,7 +27,7 @@ const Filter = ({ setMobileFiltersOpen, HandleSort ,Active}) => {
   return (
     <>
       <div className="flex items-baseline  justify-between justify-around border-b border-gray-200 pb-6 mt-6 pt-24 ">
-     <SliderBar />
+     {<SliderBar />}
         <div className="flex items-center ">
           <Menu as="div" className="relative inline-block text-left">
             <div>
@@ -38,6 +39,8 @@ const Filter = ({ setMobileFiltersOpen, HandleSort ,Active}) => {
                 />
               </Menu.Button>
             </div>
+
+            <SearchBar />
 
             <Transition
               as={Fragment}

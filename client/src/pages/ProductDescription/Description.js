@@ -1,9 +1,12 @@
-import React from 'react'
-import { useState } from 'react'
+
+import React, { useEffect,useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { RadioGroup } from '@headlessui/react'
 import product from './dummyData'
 import ProductImages from './ProductImages'
+import { useLocation } from 'react-router-dom'
+import axios from 'axios'
+import { publicRequest } from '../../RequestMethods/Requests'
 
 
 const reviews = { href: '#', average: 4, totalCount: 117 }
@@ -14,25 +17,45 @@ function classNames(...classes) {
 
 const Description = () => {
 
+  const location = useLocation();
+  const productId = location.pathname.split('/')[2];
+  const [Product,setProduct] = useState({});
+
   const [selectedColor, setSelectedColor] = useState(product.colors[0])
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
+
+  useEffect(()=>{
+   const getProduct = async()=>{
+    try {
+      const response = await publicRequest.get('/product/find/'+productId)
+      setProduct(response.data.ProductInfo)
+      console.log("My product",Product)
+  } catch (error) { 
+    console.log(error)
+  }
+   }
+   getProduct();
+  },[productId])
+
+
   
   return (
     <div className="bg-white" style={{ marginTop:"7rem" }}>
       <div className="pt-6">
         {/* Image gallery */}
-       <ProductImages />
+       <ProductImages  img = {Product.img} />
 
         {/* Product info */}
         <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{Product.title}</h1>
             <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{product.name}</h1>
           </div>
 
           {/* Options */}
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
-            <p className="text-3xl tracking-tight text-gray-900">{product.price}</p>
+            <p className="text-3xl tracking-tight text-gray-900">{Product.price}</p>
 
             {/* Reviews */}
             <div className="mt-6">
@@ -56,9 +79,9 @@ const Description = () => {
                 </a>
               </div>
             </div>
-
             <form className="mt-10">
               {/* Colors */}
+              {/* <div>
               <div>
                 <h3 className="text-sm font-medium text-gray-900">Color</h3>
 
@@ -92,7 +115,8 @@ const Description = () => {
                     ))}
                   </div>
                 </RadioGroup>
-              </div>
+              </div> 
+              </div> */}
 
               {/* Sizes */}
               <div className="mt-10">
@@ -171,6 +195,7 @@ const Description = () => {
               <h3 className="sr-only">Description</h3>
 
               <div className="space-y-6">
+                <p className="text-base text-gray-900">{Product.desc}</p>
                 <p className="text-base text-gray-900">{product.description}</p>
               </div>
             </div>
@@ -180,11 +205,20 @@ const Description = () => {
 
               <div className="mt-4">
                 <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
+                    <li className="text-gray-400">
+                      <span className="text-gray-600">{Product.style}</span>
+                    </li>
+                    <li className="text-gray-400">
+                      <span className="text-gray-600">{Product.medium}</span>
+                    </li>
+                    <li className="text-gray-400">
+                      <span className="text-gray-600">{Product.subject}</span>
                   {product.highlights.map((highlight) => (
                     <li key={highlight} className="text-gray-400">
                       <span className="text-gray-600">{highlight}</span>
                     </li>
                   ))}
+                  </li>
                 </ul>
               </div>
             </div>
@@ -193,6 +227,7 @@ const Description = () => {
               <h2 className="text-sm font-medium text-gray-900">Details</h2>
 
               <div className="mt-4 space-y-6">
+                <p className="text-sm text-gray-600">{Product.desc}</p>
                 <p className="text-sm text-gray-600">{product.details}</p>
               </div>
             </div>

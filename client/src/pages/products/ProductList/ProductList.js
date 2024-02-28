@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import QuickView from "./QuickView/QuickView";
-import products from "./productdata";
 import {Link} from 'react-router-dom'
 import axios from 'axios'
+import { publicRequest } from "../../../RequestMethods/Requests";
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 const ProductList = ({filter,sort}) => {
   const [Products,setProducts] =  useState([]);
+  const [loading, setLoading] = useState(true);
 
   const [open, setOpen] = useState(false);
   const handleShow = () => setOpen(true);
@@ -15,7 +18,7 @@ const ProductList = ({filter,sort}) => {
     const fetchProducts = async () => {
       try {
         // Construct the API request URL with filter and sort options
-        let url = 'https://chromo-x-test.vercel.app/product?';
+        let url = new URL(`${publicRequest.defaults.baseURL}/product?`);
         if (filter) {
           for (const key in filter) {
             if (filter.hasOwnProperty(key)) {
@@ -38,6 +41,7 @@ console.log("My url -> ",url)
         // Fetch products from the backend
         const response = await axios.get(url);
         setProducts(response.data);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching products:', error);
       }
@@ -53,6 +57,28 @@ console.log("My url -> ",url)
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
             Customers also purchased
           </h2>
+          {
+          loading ? ( // Render loading indicator if loading is true
+        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2  xl:grid-cols-4 ">
+        {Array.from({ length: 10 }).map((_, index) => (
+          <div key={index} className="group relative flex flex-col items-center justify-center ">
+            <Skeleton height={200} width={290} className="bg-gray-200 rounded-md overflow-hidden  ">
+              {/* Image skeleton */}
+              <div className="h-32 bg-gray-300" />
+            </Skeleton>
+            <div className="mt-4  w-full">
+              <Skeleton height={24} width={200} className="mb-2 bg-gray-200 mx-8" />
+              <Skeleton height={16} width={240} className="mb-2 bg-gray-200 mx-8" />
+              <div className="flex justify-between w-full">
+                <Skeleton height={30} width={80} className="bg-gray-200 mx-8" />
+                <Skeleton height={30} width={80} className="bg-gray-200 mx-8" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+        ) : (
 
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2  lg:grid-cols-4  xl:grid-cols-5  xl:gap-x-10">
             {Products.map((product) => (
@@ -87,7 +113,7 @@ console.log("My url -> ",url)
                   <button onClick={handleShow} className="group relative hover:bg-black hover:text-white flex items-center justify-center group-hover:opacity-100 transition duration-300 bg-transparent font-semibold py-2 px-4 border border-gray-800 rounded md:text-sm">
                     Quick View
                   </button>
-                 <Link to={`/product/${product.id}`} >
+                 <Link to={`/product/${product._id}`} >
                  <button className="group relative hover:bg-black hover:text-white flex items-center justify-center group-hover:opacity-100 transition duration-300 bg-transparent font-semibold py-2 px-4 border border-gray-800 rounded md:text-sm">
                    Show details
                   </button>
@@ -95,8 +121,10 @@ console.log("My url -> ",url)
                 </div>
               </div>
             ))}
+        
           </div>
-        </div>
+        )}
+      </div>
       </div>
       <QuickView  open={open} setOpen={setOpen}  />
     </>
