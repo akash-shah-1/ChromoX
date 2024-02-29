@@ -40,8 +40,6 @@ const Filter = ({ setMobileFiltersOpen, HandleSort ,Active}) => {
               </Menu.Button>
             </div>
 
-            <SearchBar />
-
             <Transition
               as={Fragment}
               enter="transition ease-out duration-100"
