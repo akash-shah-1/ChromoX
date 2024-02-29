@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const Base_URL = 'http://localhost:8080'; // local link
-// const Base_URL = 'https://chromo-x-test.vercel.app' // Live link
+// const Base_URL = 'http://localhost:8080'; // local link
+const Base_URL = 'https://chromo-x-test.vercel.app' // Live link
 const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWMxZTcyYmYzZTliY2U0ZDgzMmExYWQiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDkwMzM0MTAsImV4cCI6MTcwOTAzNzAxMH0.buXZjgnMGIB85pcNoW8iExtcOG6KHvqV1cdzCVowj3Y'
 
 // Function to create an axios instance with a base URL
