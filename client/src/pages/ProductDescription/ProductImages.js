@@ -75,8 +75,8 @@ const ProductImages = ({ img }) => {
           </div>
         </div>
 
-        <div className="lg:hidden sm:block mx-auto">
-        <Carousel animation="slide" height='500px' autoPlay={false}>
+        <div className="lg:hidden sm:block mx-auto h-90" >
+        <Carousel animation="slide" cycleNavigation={false} navButtonsAlwaysVisible={true} autoPlay={false} fullHeightHover={false}>
             <img src="https://images.unsplash.com/photo-1567225477277-c8162eb4991d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBhaW50aW5ncyUyMHdpdGglMjBmcmFtZXxlbnwwfHwwfHx8MA%3D%3D" alt="Image 1" className="mx-auto"/>
             <img src="https://images.unsplash.com/photo-1513161455079-7dc1de15ef3e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGFpbnRpbmdzJTIwd2l0aCUyMGZyYW1lfGVufDB8fDB8fHww" alt="Image 2"  className="mx-auto" />
             <img src="https://images.unsplash.com/photo-1509744645300-a2098b11871a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGFpbnRpbmdzJTIwd2l0aCUyMGZyYW1lfGVufDB8fDB8fHww" alt="Image 3"  className="mx-auto"/>
