@@ -17,7 +17,6 @@ const ProductList = ({ filter, sort }) => {
     setSelectedProduct(product);
   };
 
-
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -53,6 +52,8 @@ const ProductList = ({ filter, sort }) => {
     // Call the fetchProducts function when component mounts
     fetchProducts();
   }, [filter, sort]);
+
+  console.log("My products ===> ", Products);
 
   return (
     <>
@@ -143,7 +144,7 @@ const ProductList = ({ filter, sort }) => {
                     >
                       Quick View
                     </button>
-                    <Link to={`/product/${product._id}`}>
+                    <Link to={`/product/${product.subject}/${product._id}`}>
                       <button className="group relative hover:bg-black hover:text-white flex items-center justify-center group-hover:opacity-100 transition duration-300 bg-transparent font-semibold py-2 px-4 border border-gray-800 rounded md:text-sm">
                         Show details
                       </button>
@@ -154,9 +155,8 @@ const ProductList = ({ filter, sort }) => {
             </div>
           )}
         </div>
-       
-  <QuickView open={open} setOpen={setOpen} Product={selectedProduct} />
 
+        <QuickView open={open} setOpen={setOpen} Product={selectedProduct} />
       </div>
     </>
   );

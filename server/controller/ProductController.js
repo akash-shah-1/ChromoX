@@ -152,3 +152,26 @@ module.exports.getAllProduct = async (req, res) => {
     });
   }
 };
+
+//Get suggestions products from product's subject
+module.exports.getsuggestionsProducts = async (req, res) => {
+  try {
+    
+    console.log("My subject ---> ", req.params.s);
+      const subject = req.params.s;
+      const products = await Product.find({ subject :subject});
+
+      if (!products || products.length === 0) {
+          return res.status(404).json({
+              message: "No products found for the provided subject."
+          });
+      }
+
+      return res.status(200).json(products);
+  } catch (error) {
+      console.error("Error in finding products:", error);
+      return res.status(500).json({
+          message: "Error in finding products. Please try again later."
+      });
+  }
+}

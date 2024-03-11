@@ -15,5 +15,7 @@ router.delete('/:id', passport.authenticate('jwt',{session:false}),isAdmin,Produ
 router.get('/find/:id',ProductController.getProduct);
 //Get All Product
 router.get('/',ProductController.getAllProduct);
+//Get suggestions product
+router.get('/:s',ProductController.getsuggestionsProducts );
 
 module.exports = router;
