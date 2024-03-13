@@ -6,7 +6,7 @@ import { publicRequest } from "../../../RequestMethods/Requests";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-const ProductList = ({ filter, sort }) => {
+const ProductList = ({ filter, sort, col}) => {
   const [Products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState({});
@@ -105,7 +105,7 @@ const ProductList = ({ filter, sort }) => {
               ))}
             </div>
           ) : (
-            <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2  lg:grid-cols-4  xl:grid-cols-4  xl:gap-x-10">
+            <div className={`mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2  lg:grid-cols-4  ${col?'xl:grid-cols-6':'xl:grid-cols-4'}  xl:gap-x-10`}>
               {Products.map((product) => (
                 <div key={product.id} className="group relative">
                   <Link to="/product_name/des">

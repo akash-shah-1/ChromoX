@@ -12,7 +12,6 @@ const SuggestionProducts = ({subject}) => {
         const getProduct = async()=>{
          try {
            const response = await publicRequest.get('/product/'+subject)
-        //    setProduct(response.data.ProductInfo)
            console.log("My product",Products)
            setProduct(response.data)
        } catch (error) { 
