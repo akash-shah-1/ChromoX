@@ -58,7 +58,7 @@ const ProductList = ({ filter, sort, col}) => {
   return (
     <>
       <div className="bg-white">
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-full lg:px-8">
+        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-full lg:px-8 ">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
             Customers also purchased
           </h2>
@@ -105,11 +105,11 @@ const ProductList = ({ filter, sort, col}) => {
               ))}
             </div>
           ) : (
-            <div className={`mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2  lg:grid-cols-4  ${col?'xl:grid-cols-6':'xl:grid-cols-4'}  xl:gap-x-10`}>
+            <div className={`mt-6 grid grid-cols-2 gap-x-3  lg:gap-x-6 gap-y-5 lg:gap-y-10 sm:grid-cols-2  lg:grid-cols-4  ${col?'xl:grid-cols-6':'xl:grid-cols-4'}  xl:gap-x-10`}>
               {Products.map((product) => (
-                <div key={product.id} className="group relative">
+                <div key={product.id} className="group relative border p-2 rounded border-black">
                   <Link to="/product_name/des">
-                    <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                    <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80 ">
                       <img
                         src={product.img}
                         alt={product.imageAlt}
@@ -128,7 +128,7 @@ const ProductList = ({ filter, sort, col}) => {
                           {product.title}
                         </a>
                       </h3>
-                      <p className="mt-1 text-sm text-gray-500">
+                      <p className="mt-1 lg:text-sm  text-xs text-gray-500">
                         {product.desc}
                       </p>
                     </div>
@@ -138,18 +138,20 @@ const ProductList = ({ filter, sort, col}) => {
                   </div>
                   {/* Buttons ================ */}
                   <div className="flex justify-between">
-                    <button
-                      onClick={() => handleShow(product)}
-                      className="group relative hover:bg-black hover:text-white flex items-center justify-center group-hover:opacity-100 transition duration-300 bg-transparent font-semibold py-2 px-4 border border-gray-800 rounded md:text-sm"
-                    >
-                      Quick View
-                    </button>
-                    <Link to={`/product/${product.subject}/${product._id}`}>
-                      <button className="group relative hover:bg-black hover:text-white flex items-center justify-center group-hover:opacity-100 transition duration-300 bg-transparent font-semibold py-2 px-4 border border-gray-800 rounded md:text-sm">
-                        Show details
-                      </button>
-                    </Link>
-                  </div>
+  <button
+    onClick={() => handleShow(product)}
+    className="group relative hover:bg-black hover:text-white flex items-center justify-center group-hover:opacity-100 transition duration-300 bg-transparent font-semibold py-2 px-4 border border-gray-800 rounded lg:text-sm text-xs m-1"
+  >
+    Quick View
+  </button>
+  <Link to={`/product/${product.subject}/${product._id}`}>
+    <button className="group relative hover:bg-black hover:text-white flex items-center justify-center group-hover:opacity-100 transition duration-300 bg-transparent font-semibold py-2 px-4 border border-gray-800 rounded lg:text-sm text-xs m-1">
+      Show details
+    </button>
+  </Link>
+</div>
+
+
                 </div>
               ))}
             </div>
